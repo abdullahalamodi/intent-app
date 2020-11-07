@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 if (checkPermission()) {
                     val pickContactIntent =
-                        Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+                        Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
                     startActivityForResult(pickContactIntent, REQUEST_CONTACT)
                     //check
                     val packageManager: PackageManager = packageManager
@@ -126,9 +126,9 @@ class MainActivity : AppCompatActivity() {
                         }
                         it.moveToFirst()
                         phoneNumber =
-                            it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                        name =
                             it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        name =
+                            it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
                         it.close();
                     }
                 } catch (e: Exception) {
