@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/logo"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:padding="2dp"
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/btns_shape"
+        android:src="@drawable/circle_img"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="casual"
+        android:text="Abdullah Alamodi"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_location"
+        android:fontFamily="casual"
+        android:text="Yemen - Hadarmoot"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageButton
+        android:id="@+id/facebook"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#4CAF50"
+        android:src="@drawable/ic_facebook"
+        android:tint="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.39" />
+
+    <ImageButton
+        android:id="@+id/contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#FFEB3B"
+        android:src="@drawable/ic_contact"
+        android:tint="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="0"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/email" />
+
+    <ImageButton
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#2196F3"
+        android:src="@drawable/ic_mail"
+        android:tint="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/store"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="50"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintStart_toEndOf="@+id/facebook" />
+
+    <ImageButton
+        android:id="@+id/store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#E91E63"
+        android:src="@drawable/ic_store"
+        android:tint="#fff"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="100"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toTopOf="@+id/facebook" />
+
+    <ImageButton
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#9C27B0"
+        android:src="@drawable/ic_location"
+        android:tint="#fff"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="310"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/facebook"
+        app:layout_constraintTop_toTopOf="@+id/contacts" />
+
+    <ImageButton
+        android:id="@+id/web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#673AB7"
+        android:src="@drawable/ic_web"
+        android:tint="#fff"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="260"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toStartOf="@+id/facebook"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/btns_shape"
+        android:backgroundTint="#F44336"
+        android:src="@drawable/ic_close"
+        android:tint="#fff"
+        app:layout_constraintCircle="@id/facebook"
+        app:layout_constraintCircleAngle="180"
+        app:layout_constraintCircleRadius="120dp"
+        app:layout_constraintEnd_toEndOf="@+id/facebook"
+        app:layout_constraintTop_toBottomOf="@+id/facebook" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
