@@ -44,24 +44,13 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 if (checkPermission()) {
-                    val pickContactIntent =
-                        Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
-                    startActivityForResult(pickContactIntent, REQUEST_CONTACT)
-                    //check
-                    val packageManager: PackageManager = packageManager
-                    val resolvedActivity: ResolveInfo? =
-                        packageManager.resolveActivity(
-                            pickContactIntent,
-                            PackageManager.MATCH_DEFAULT_ONLY
-                        )
-                    if (resolvedActivity == null) {
-                        it.isEnabled = false
-                    }
-                }
-                else{
+                addContact();
+                } else {
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                        requestPermissions(arrayOf(READ_CONTACTS, WRITE_CONTACTS),
-                            PERMISSION_REQUEST_CODE)
+                        requestPermissions(
+                            arrayOf(READ_CONTACTS, WRITE_CONTACTS),
+                            PERMISSION_REQUEST_CODE
+                        )
                     }
                 }
             }
@@ -80,9 +69,9 @@ class MainActivity : AppCompatActivity() {
                 startActivity(this);
             }
         }
-        store.setOnClickListener {
+        github.setOnClickListener {
             Intent(ACTION_VIEW).apply {
-                data = Uri.parse("market://");
+                data = Uri.parse("https://github.com/abdullahalamodi");
                 startActivity(this);
             }
         }
@@ -107,37 +96,52 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when {
-            resultCode != RESULT_OK -> return
-            requestCode == REQUEST_CONTACT && data != null -> {
-                val contactUri: Uri? = data.data
-                try {
-                    val cursor = contactUri?.let {
-                        contentResolver
-                            .query(it, null, null, null, null)
-                    }
-                    cursor?.let {
-                        // Verify cursor contains at least one result
-                        if (it.count == 0) {
-                            return
-                        }
-                        it.moveToFirst()
-                        phoneNumber =
-                            it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        name =
-                            it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-                        it.close();
-                    }
-                } catch (e: Exception) {
-                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show();
-                }
+    private fun addContact():String {
+        name = "Abdullah Alamodi";
+        phoneNumber = "715706927";
+        Intent(ContactsContract.Intents.Insert.ACTION).apply {
+            type = ContactsContract.RawContacts.CONTENT_TYPE;
+            putExtra(ContactsContract.Intents.Insert.NAME, name);
+            putExtra(ContactsContract.Intents.Insert.PHONE, phoneNumber);
+            if (resolveActivity(packageManager) != null) {
+                startActivity(this);
             }
         }
 
+        return phoneNumber;
     }
+
+
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        when {
+//            resultCode != RESULT_OK -> return
+//            requestCode == REQUEST_CONTACT && data != null -> {
+//                val contactUri: Uri? = data.data
+//                try {
+//                    val cursor = contactUri?.let {
+//                        contentResolver
+//                            .query(it, null, null, null, null)
+//                    }
+//                    cursor?.let {
+//                        // Verify cursor contains at least one result
+//                        if (it.count == 0) {
+//                            return
+//                        }
+//                        it.moveToFirst()
+//                        phoneNumber =
+//                            it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+//                        name =
+//                            it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+//                        it.close();
+//                    }
+//                } catch (e: Exception) {
+//                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        }
+//
+//    }
 
     private fun checkPermission(): Boolean {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
